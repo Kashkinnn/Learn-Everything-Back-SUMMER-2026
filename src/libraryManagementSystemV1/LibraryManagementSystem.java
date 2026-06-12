@@ -1,8 +1,6 @@
 package libraryManagementSystemV1;
 
-import libraryManagementSystemV1.CustomExceptions.BookAlreadyBorrowedException;
-import libraryManagementSystemV1.CustomExceptions.BookNotBorrowedException;
-import libraryManagementSystemV1.CustomExceptions.BookNotFoundException;
+import libraryManagementSystemV1.CustomExceptions.*;
 
 import java.util.*;
 
@@ -101,10 +99,14 @@ public class LibraryManagementSystem implements Library{
     @Override
     public void returnBook(int id, String borrower) {
         if(!borrowers.containsKey(borrower)){
-            System.out.println("Borrower does not exist!");
-            return;
+            throw new BorrowerNotFound("No borrower");
         }
+
         Book book = findBookById(id);
+
+        if(borrowers.get(borrower).contains(book)){
+            throw new WrongBorrowerException(borrower + "is not the borrower");
+        }
 
         if(book == null){
             throw new BookNotFoundException("Book Not found");
