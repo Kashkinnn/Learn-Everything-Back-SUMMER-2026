@@ -35,7 +35,10 @@ public class Main {
 
 
         FileManagement fm = new FileManagement(lms.retrieveAllBooks());
-        fm.createFile();
+        fm.saveBooksToFile();
+
+        lms.addNewBook("Test5", "Test5", "Mar20");
+
         fm.saveBooksToFile();
 
     }

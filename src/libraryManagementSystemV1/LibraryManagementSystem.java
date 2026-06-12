@@ -1,13 +1,10 @@
 package libraryManagementSystemV1;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class LibraryManagementSystem implements Library{
     private ArrayList<Book> books;
-    private HashMap<String, Book> borrowers;
+    private HashMap<String, ArrayList<Book>> borrowers;
     private int id;
 
     public LibraryManagementSystem(){
@@ -82,7 +79,12 @@ public class LibraryManagementSystem implements Library{
         }
 
         if(book.borrowBook()){
-            borrowers.put(borrower, book);
+            if(!borrowers.containsKey(borrower)){
+                borrowers.put(borrower, new ArrayList<Book>());
+            }
+
+            borrowers.get(borrower).add(book);
+
             System.out.println("Successfully borrowed " + book + " by " + borrower);
             return;
         }
@@ -92,6 +94,10 @@ public class LibraryManagementSystem implements Library{
 
     @Override
     public void returnBook(int id, String borrower) {
+        if(!borrowers.containsKey(borrower)){
+            System.out.println("Borrower does not exist!");
+            return;
+        }
         Book book = findBookById(id);
 
         if(book == null){
@@ -100,7 +106,7 @@ public class LibraryManagementSystem implements Library{
         }
 
         if(book.returnBook()){
-            borrowers.remove(borrower, book);
+            borrowers.get(borrower).remove(book);
             System.out.println("Successfully returned " + book + " by " + borrower);
             return;
         }
@@ -122,8 +128,9 @@ public class LibraryManagementSystem implements Library{
         return books.size();
     }
 
-    public ArrayList<Book> retrieveAllBooks(){
-        return books;
+    public List<Book> retrieveAllBooks(){
+        List<Book> unmodifiable = Collections.unmodifiableList(books);
+        return unmodifiable;
     }
 
 

@@ -5,28 +5,14 @@ import libraryManagementSystemV1.LibraryManagementSystem;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class FileManagement {
-    LibraryManagementSystem lms;
-    ArrayList<Book> books;
+    List<Book> books;
 
-    public FileManagement(ArrayList<Book> books){
-        lms = new LibraryManagementSystem();
+    public FileManagement(List<Book> books){
         this.books = books;
-    }
-
-    public void createFile() throws FileNotFoundException {
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("lmsRecords.txt", true))){
-
-
-            bw.write("Library Management System: ");
-            System.out.println("Title written");
-            bw.newLine();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
     }
 
     public void readFile(){
@@ -45,7 +31,7 @@ public class FileManagement {
     }
 
     public void saveBooksToFile(){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("lmsRecords.txt", true))){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("lmsRecords.txt",false))){
             for(Book b : books){
                 System.out.println("Writing " + b);
                 bw.write(b.toString());
@@ -55,6 +41,11 @@ public class FileManagement {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void loadBookIntoList(){
+
     }
 
 
