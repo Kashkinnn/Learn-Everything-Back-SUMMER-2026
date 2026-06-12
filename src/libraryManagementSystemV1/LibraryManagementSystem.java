@@ -122,5 +122,9 @@ public class LibraryManagementSystem implements Library{
         return books.size();
     }
 
+    public ArrayList<Book> retrieveAllBooks(){
+        return books;
+    }
+
 
 }

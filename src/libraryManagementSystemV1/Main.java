@@ -1,5 +1,7 @@
 package libraryManagementSystemV1;
 
+import libraryManagementSystemV1.FileManagement.FileManagement;
+
 public class Main {
 
     void main(){
@@ -28,6 +30,11 @@ public class Main {
 
         System.out.println(lms.bookCount());
         lms.displayAllBooks();
+
+
+        FileManagement fm = new FileManagement(lms.retrieveAllBooks());
+        fm.createFile();
+        fm.saveBooksToFile();
 
     }
 
