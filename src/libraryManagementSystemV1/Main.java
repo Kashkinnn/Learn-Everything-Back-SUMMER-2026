@@ -2,9 +2,11 @@ package libraryManagementSystemV1;
 
 import libraryManagementSystemV1.FileManagement.FileManagement;
 
+import java.io.FileNotFoundException;
+
 public class Main {
 
-    void main(){
+    void main() throws FileNotFoundException {
         LibraryManagementSystem lms = new LibraryManagementSystem();
         lms.addNewBook("test", "test", "Nov20");
         lms.addNewBook("test2", "test2", "Dec21");
