@@ -15,7 +15,7 @@ Project LMS Checklist
 - ✅ Basic Crud Functionalities
 - ✅ Use of OOP principles
 - ✅ File persistence
-- Custom exceptions
+- ✅ Custom exceptions (BookNotFound, BookAlreadyBorrowed, BookNotBorrowed (To add more custom exceptions))
 - ID validation
 
 
