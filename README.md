@@ -11,6 +11,16 @@ Serves as my introduction project, this is just the basic refresher for me
 # Library Management System 
 A library management system developed using java. Meant to be a refresher and a sandbox for me for java principles. I will be improving this throughout the entire summer, since I want to make this into one of my portfolio project. And this project will also serve as the baseline of what I learned, what I have learned and what I will learn.
 
+Project LMS Checklist
+✅ - Basic Crud Functionalities
+✅ - Use of OOP principles
+✅ - File persistence
+- Custom exceptions
+- ID validation
+
+
+
+
 My goal is to learn 
 - Java / Jakarta
 - Sprint -> Spring boot
