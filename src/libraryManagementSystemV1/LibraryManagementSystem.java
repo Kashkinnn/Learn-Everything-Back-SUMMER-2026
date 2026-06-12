@@ -1,5 +1,9 @@
 package libraryManagementSystemV1;
 
+import libraryManagementSystemV1.CustomExceptions.BookAlreadyBorrowedException;
+import libraryManagementSystemV1.CustomExceptions.BookNotBorrowedException;
+import libraryManagementSystemV1.CustomExceptions.BookNotFoundException;
+
 import java.util.*;
 
 public class LibraryManagementSystem implements Library{
@@ -51,8 +55,7 @@ public class LibraryManagementSystem implements Library{
     public void updateBook(int id) {
         Book book = findBookById(id);
         if(book == null){
-            System.out.println("Book not found!");
-            return;
+            throw new BookNotFoundException("Book Not found");
         }
 
         Scanner sc = new Scanner(System.in);
@@ -74,8 +77,11 @@ public class LibraryManagementSystem implements Library{
         Book book = findBookById(id);
 
         if(book == null){
-            System.out.println("Book not found!");
-            return;
+            throw new BookNotFoundException("Book Not found");
+        }
+
+        if(book.getStatus()){
+            throw new BookAlreadyBorrowedException("Book not here bru!");
         }
 
         if(book.borrowBook()){
@@ -101,8 +107,11 @@ public class LibraryManagementSystem implements Library{
         Book book = findBookById(id);
 
         if(book == null){
-            System.out.println("Book not found!");
-            return;
+            throw new BookNotFoundException("Book Not found");
+        }
+
+        if(book.getStatus() == false){
+            throw new BookNotBorrowedException("Book is still here bru");
         }
 
         if(book.returnBook()){

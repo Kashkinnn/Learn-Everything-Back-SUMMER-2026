@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 
 public class Main {
 
-    void main() throws FileNotFoundException {
+    void main() throws Exception {
         LibraryManagementSystem lms = new LibraryManagementSystem();
         lms.addNewBook("test", "test", "Nov20");
         lms.addNewBook("test2", "test2", "Dec21");
@@ -14,9 +14,6 @@ public class Main {
         lms.removeBook(0);
         lms.displayAllBooks();
 
-        lms.borrowBook(0, "Joel");
-        System.out.println();
-        lms.displayAllBorrowers();
 
         System.out.println();
         lms.displayAllBooks();
@@ -40,6 +37,10 @@ public class Main {
         lms.addNewBook("Test5", "Test5", "Mar20");
 
         fm.saveBooksToFile();
+
+        lms.borrowBook(2, "Joel");
+        System.out.println();
+        lms.displayAllBorrowers();
 
     }
 
