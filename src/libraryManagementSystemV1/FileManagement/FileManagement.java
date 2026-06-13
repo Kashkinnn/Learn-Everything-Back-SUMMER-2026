@@ -33,8 +33,8 @@ public class FileManagement {
     public void saveBooksToFile(){
         try(BufferedWriter bw = new BufferedWriter(new FileWriter("lmsRecords.txt",false))){
             for(Book b : books){
-                System.out.println("Writing " + b);
-                bw.write(b.toString());
+                System.out.println(b.getId() + "|" + b.getName() + "|" + b.getAuthor() + "|" + b.getPubDate() + "|" + b.getStatus());
+                bw.write(b.getId() + "|" + b.getName() + "|" + b.getAuthor() + "|" + b.getPubDate() + "|" + b.getStatus());
                 bw.newLine();
             }
             System.out.println("File writing successful!");
