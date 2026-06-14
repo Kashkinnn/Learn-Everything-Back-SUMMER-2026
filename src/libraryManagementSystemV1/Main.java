@@ -20,9 +20,12 @@ public class Main {
 
         fm.saveBooksToFile();
 
-        lms.borrowBook(2, "Joel");
+//        lms.borrowBook(2, "Joel");
+//        System.out.println();
+//        lms.displayAllBorrowers();
+
         System.out.println();
-        lms.displayAllBorrowers();
+        fm.readFile("lmsRecords.txt");
 
     }
 

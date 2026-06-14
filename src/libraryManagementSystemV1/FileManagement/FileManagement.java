@@ -5,6 +5,7 @@ import libraryManagementSystemV1.LibraryManagementSystem;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -15,14 +16,15 @@ public class FileManagement {
         this.books = books;
     }
 
-    public void readFile(){
+    public void readFile(String fileName){
         try{
-            File file = new File("lmsRecords.txt");
+            File file = new File(fileName);
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line;
             while((line = bufferedReader.readLine()) != null){
+                line = Arrays.toString(line.split("\\|"));
                 System.out.println(line);
             }
         }catch (Exception e){
