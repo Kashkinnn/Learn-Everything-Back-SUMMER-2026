@@ -9,6 +9,7 @@ public class LibraryManagementSystem implements Library{
     private HashMap<String, ArrayList<Book>> borrowers;
     private int id;
     private int maxId = 0;
+    private int nextId = 1;
 
     public LibraryManagementSystem(){
         books = new ArrayList<>();
@@ -32,8 +33,8 @@ public class LibraryManagementSystem implements Library{
 
     @Override
     public void addNewBook(String name, String author, String pubDate) {
-        int newId = id + maxId;
-        Book b = new Book(name, author, pubDate, newId);
+        nextId = id + maxId;
+        Book b = new Book(name, author, pubDate, nextId++);
         books.add(b);
         System.out.println("Successfully added: " + b);
     }
@@ -106,12 +107,12 @@ public class LibraryManagementSystem implements Library{
 
         Book book = findBookById(id);
 
-        if(borrowers.get(borrower).contains(book)){
-            throw new WrongBorrowerException(borrower + "is not the borrower");
-        }
-
         if(book == null){
             throw new BookNotFoundException("Book Not found");
+        }
+
+        if(!borrowers.get(borrower).contains(book)){
+            throw new WrongBorrowerException(borrower + "is not the borrower");
         }
 
         if(book.getStatus() == false){
@@ -153,7 +154,7 @@ public class LibraryManagementSystem implements Library{
 
             String idString = (String) inner.get(0);
             int tempId = Integer.parseInt(idString);
-            maxId = tempId;
+            maxId = Math.max(maxId, tempId);
             System.out.println("Current max: " + maxId);
         }
     }
