@@ -6,6 +6,7 @@ import libraryManagementSystemV1.LibraryManagementSystem;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -16,26 +17,20 @@ public class FileManagement {
         this.books = books;
     }
 
-    public List<List<String>> readFile(String fileName){
-        List<List<String>> forReturn = new ArrayList<>();
-        try{
-            File file = new File(fileName);
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+    public List<List<Object>> readFile(String fileName){
+        List<List<Object>> forReturn = new ArrayList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
 
             String line;
-            List<String> innerList = new ArrayList<>();
             while((line = bufferedReader.readLine()) != null){
-                innerList.clear();
-                line = Arrays.toString(line.split("\\|"));
-                innerList.add(line);
-                System.out.println(innerList);
+                String[] splitData = line.split("\\|");
+                List<Object> innerList = new ArrayList<>(Arrays.asList(splitData));
                 forReturn.add(innerList);
             }
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
-
+//        System.out.println(forReturn);
         return forReturn;
     }
 

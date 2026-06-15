@@ -144,14 +144,29 @@ public class LibraryManagementSystem implements Library{
         return unmodifiable;
     }
 
-    public void loadBooksFromFile(List<Object> curr){
-        addNewBookFromFile((String) curr.get(1), (String) curr.get(2), (String) curr.get(3), (Integer) curr.get(0));
+    public void loadBooksFromFile(List<List<Object>> curr) {
+        for(List<Object> inner : curr){
+            System.out.println(inner);
+            addNewBookFromFile(inner);
+        }
     }
 
-    public void addNewBookFromFile(String name, String author, String pubDate, int id) {
-        Book b = new Book(name, author, pubDate, id);
-        books.add(b);
-        System.out.println("Successfully added: " + b);
+
+    public void addNewBookFromFile(List<Object> b) {
+        try {
+            String idString = (String) b.get(0);
+            int bookId = Integer.parseInt(idString.trim());
+            Book bAdd = new Book((String) b.get(1), (String) b.get(2), (String) b.get(3), bookId);
+            books.add(bAdd);
+            System.out.println("Successfully added: " + b);
+
+        } catch (ClassCastException e) {
+            System.out.println("Casting error - ensure your list only contains strings.");
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            System.out.println("Parsing error - tried to turn a non-number into an int: " + b.get(0));
+            e.printStackTrace();
+        }
     }
 
 
