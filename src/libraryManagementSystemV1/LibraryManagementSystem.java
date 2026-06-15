@@ -8,6 +8,7 @@ public class LibraryManagementSystem implements Library{
     private ArrayList<Book> books;
     private HashMap<String, ArrayList<Book>> borrowers;
     private int id;
+    private int maxId = 0;
 
     public LibraryManagementSystem(){
         books = new ArrayList<>();
@@ -31,7 +32,8 @@ public class LibraryManagementSystem implements Library{
 
     @Override
     public void addNewBook(String name, String author, String pubDate) {
-        Book b = new Book(name, author, pubDate, id++);
+        int newId = id + maxId;
+        Book b = new Book(name, author, pubDate, newId);
         books.add(b);
         System.out.println("Successfully added: " + b);
     }
@@ -148,6 +150,11 @@ public class LibraryManagementSystem implements Library{
         for(List<Object> inner : curr){
             System.out.println(inner);
             addNewBookFromFile(inner);
+
+            String idString = (String) inner.get(0);
+            int tempId = Integer.parseInt(idString);
+            maxId = tempId;
+            System.out.println("Current max: " + maxId);
         }
     }
 
