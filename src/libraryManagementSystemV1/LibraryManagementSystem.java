@@ -144,5 +144,15 @@ public class LibraryManagementSystem implements Library{
         return unmodifiable;
     }
 
+    public void loadBooksFromFile(List<Object> curr){
+        addNewBookFromFile((String) curr.get(1), (String) curr.get(2), (String) curr.get(3), (Integer) curr.get(0));
+    }
+
+    public void addNewBookFromFile(String name, String author, String pubDate, int id) {
+        Book b = new Book(name, author, pubDate, id);
+        books.add(b);
+        System.out.println("Successfully added: " + b);
+    }
+
 
 }

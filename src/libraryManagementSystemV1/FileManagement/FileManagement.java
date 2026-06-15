@@ -16,20 +16,27 @@ public class FileManagement {
         this.books = books;
     }
 
-    public void readFile(String fileName){
+    public List<List<String>> readFile(String fileName){
+        List<List<String>> forReturn = new ArrayList<>();
         try{
             File file = new File(fileName);
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line;
+            List<String> innerList = new ArrayList<>();
             while((line = bufferedReader.readLine()) != null){
+                innerList.clear();
                 line = Arrays.toString(line.split("\\|"));
-                System.out.println(line);
+                innerList.add(line);
+                System.out.println(innerList);
+                forReturn.add(innerList);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        return forReturn;
     }
 
     public void saveBooksToFile(){
@@ -44,12 +51,6 @@ public class FileManagement {
             e.printStackTrace();
         }
     }
-
-
-    public void loadBookIntoList(){
-
-    }
-
 
 
 }
