@@ -26,11 +26,14 @@ public class Main {
 
 //        System.out.println();
 //        fm.readFile("lmsRecords.txt");
-        System.out.println(fm.readFile("lmsRecords.txt"));
+
+        System.out.println(true);
+
+//        System.out.println(fm.readFile("lmsRecords.txt"));
+////        System.out.println();
+//        lms.loadBooksFromFile(fm.readFile("lmsRecords.txt"));
 //        System.out.println();
-        lms.loadBooksFromFile(fm.readFile("lmsRecords.txt"));
-        System.out.println();
-        lms.displayAllBooks();
+//        lms.displayAllBooks();
 
     }
 

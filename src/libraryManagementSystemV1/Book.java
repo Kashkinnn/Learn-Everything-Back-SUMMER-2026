@@ -22,6 +22,14 @@ public class Book{
         this.isBorrowed = false;
     }
 
+    public Book(String name, String author, String pubDate, int id, boolean isBorrowed){
+        this.name = name;
+        this.author = author;
+        this.pubDate = pubDate;
+        this.id = id;
+        this.isBorrowed = isBorrowed;
+    }
+
     public String getName() {
         return name;
     }
@@ -48,6 +56,10 @@ public class Book{
 
     public int getId(){
         return id;
+    }
+
+    public void setStatus(boolean stat){
+        this.isBorrowed = stat;
     }
 
     public boolean getStatus(){

@@ -156,7 +156,9 @@ public class LibraryManagementSystem implements Library{
         try {
             String idString = (String) b.get(0);
             int bookId = Integer.parseInt(idString.trim());
-            Book bAdd = new Book((String) b.get(1), (String) b.get(2), (String) b.get(3), bookId);
+            String booleanString = (String) b.get(4);
+            boolean status = Boolean.parseBoolean(booleanString);
+            Book bAdd = new Book((String) b.get(1), (String) b.get(2), (String) b.get(3), bookId, status);
             books.add(bAdd);
             System.out.println("Successfully added: " + b);
 
