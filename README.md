@@ -3,19 +3,21 @@ This repository contain everything I practiced in Java this summer. My goal is t
 
 I have decided to take some time to actually learn back what I have lost due to academic pressure in which lead me to severe burnout, and over reliance on AI. So here I am treating myself as an complete beginner.
 
-# Student Management System
+# List of mini projects:
+
+## Student Management System
 Serves as my introduction project, this is just the basic refresher for me
 - OOP principles
 - Classes
 
-# Library Management System 
+## Library Management System V1
 A library management system developed using java. Meant to be a refresher and a sandbox for me for java principles. I will be improving this throughout the entire summer, since I want to make this into one of my portfolio project. And this project will also serve as the baseline of what I learned, what I have learned and what I will learn.
 
 Project LMS Checklist
 - ✅ Basic Crud Functionalities
 - ✅ Use of OOP principles
 - ✅ File persistence
-- ✅ Custom exceptions (BookNotFound, BookAlreadyBorrowed, BookNotBorrowed (To add more custom exceptions))
+- ✅ Custom exceptions
 - ID validation
 
 
